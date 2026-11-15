@@ -47,3 +47,9 @@ test('dashboard shows top insights, measurements and the partial-gravity gap',as
  const {context,get}=await boot();context.location.hash='#dashboard';await vm.runInContext('render()',context);const html=get('#page').innerHTML;
  assert.match(html,/The whole collection on one screen/);assert.equal(html.match(/class="dash-insight"/g).length,3);assert.match(html,/8 of 8 partial-gravity cells/);assert.match(html,/Reported flame spread rates/);assert.match(html,/Investigations by theme/);
 });
+test('search submit adds a cited evidence summary above results',async()=>{
+ const {context,get}=await boot();context.location.hash='#explorer';await vm.runInContext('render()',context);
+ await vm.runInContext('summarize("smoke detection")',context);const html=get('#search-summary').innerHTML;
+ assert.equal(get('#search-summary').hidden,false);assert.match(html,/Evidence summary/);assert.match(html,/Evidence retrieval/);assert.match(html,/SAME/);assert.match(html,/open-summary/);
+ await vm.runInContext('summarize("")',context);assert.equal(get('#search-summary').hidden,true);
+});

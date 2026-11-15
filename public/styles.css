@@ -69,3 +69,6 @@ html{scroll-behavior:smooth}body{background:var(--paper);font-family:Inter,-appl
 
 .mission-hero .gl-stage{min-height:640px}.diptych-stage{position:relative;min-height:520px;display:grid;place-items:center;padding:30px}.diptych-stage svg.flame-diptych{position:static;transform:none;width:min(100%,600px)}
 @media(max-width:980px){.mission-hero .gl-stage{min-height:560px}}@media(max-width:650px){.diptych-stage{min-height:0;padding:10px 10px 40px}}
+
+/* AI evidence summary above search results */
+.search-summary{margin:18px 0;border-left:3px solid var(--signal)}.search-summary .answer{font-size:14px;line-height:1.7;white-space:pre-line}.search-summary .answer-head h2{font-family:Georgia,"Times New Roman",serif;font-size:22px;letter-spacing:-.03em;margin:0}.summary-skeleton{display:grid;gap:10px;margin-top:14px}.summary-skeleton i{display:block;height:11px;background:linear-gradient(90deg,#ece7dc 0,#f8f5ee 50%,#ece7dc 100%);background-size:200% 100%;animation:shimmer 1.2s linear infinite}.summary-skeleton i:nth-child(2){width:88%}.summary-skeleton i:nth-child(3){width:62%}@keyframes shimmer{to{background-position:-200% 0}}
