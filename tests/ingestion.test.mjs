@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';import {bass2Records} from '../data/bass2-generated.mjs';import {toCSV,tests} from '../src/core.mjs';
+test('all downloaded CSV data rows imported with unique identifiers',()=>{assert.equal(bass2Records.length,129);assert.equal(new Set(bass2Records.map(r=>r.id)).size,129);});
+test('raw provenance hashes match original downloaded bytes',()=>{const hash=crypto.createHash('sha256').update(fs.readFileSync('data/bass2-source.csv')).digest('hex');assert.ok(bass2Records.every(r=>r.source_sha256===hash));});
+test('CSV missing values and changing displays remain raw',()=>{const b2=bass2Records.find(r=>r.id==='B2');assert.equal(b2.raw['Final CO (ppm)'],'');assert.equal(b2.co_final_ppm,null);assert.equal(b2.oxygen_final_pct,1.6);const b6=bass2Records.find(r=>r.id==='B6');assert.match(b6.air_display,/approaching/);assert.equal(b6.airflow_cms,null);});
+test('129 versus 130 blank-row explanation is documented',()=>{const audit=JSON.parse(fs.readFileSync('data/ingestion-audit.json'));assert.equal(audit.record_count,129);assert.equal(audit.repository_display_count,130);});
+test('mixed export includes later records raw fields',()=>{const csv=toCSV(tests);assert.match(csv.split('\r\n')[0],/raw/);assert.match(csv,/Calibrated/);});
