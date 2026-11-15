@@ -72,3 +72,6 @@ html{scroll-behavior:smooth}body{background:var(--paper);font-family:Inter,-appl
 
 /* AI evidence summary above search results */
 .search-summary{margin:18px 0;border-left:3px solid var(--signal)}.search-summary .answer{font-size:14px;line-height:1.7;white-space:pre-line}.search-summary .answer-head h2{font-family:Georgia,"Times New Roman",serif;font-size:22px;letter-spacing:-.03em;margin:0}.summary-skeleton{display:grid;gap:10px;margin-top:14px}.summary-skeleton i{display:block;height:11px;background:linear-gradient(90deg,#ece7dc 0,#f8f5ee 50%,#ece7dc 100%);background-size:200% 100%;animation:shimmer 1.2s linear infinite}.summary-skeleton i:nth-child(2){width:88%}.summary-skeleton i:nth-child(3){width:62%}@keyframes shimmer{to{background-position:-200% 0}}
+
+/* Make a new answer impossible to miss */
+.answer-panel{scroll-margin-top:96px}.answer-panel:focus{outline:none}.answer-arrived{animation:answer-in .9s cubic-bezier(.2,.8,.2,1)}@keyframes answer-in{0%{box-shadow:0 0 0 0 rgba(255,107,61,.55);transform:translateY(10px)}40%{box-shadow:0 0 0 8px rgba(255,107,61,.25)}100%{box-shadow:0 0 0 0 rgba(255,107,61,0);transform:none}}
