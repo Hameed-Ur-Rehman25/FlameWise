@@ -1,0 +1,19 @@
+{
+  "source": "bass2-source.csv",
+  "sha256": "71e792bf6b5fb5ea620c5dd70fbbac05515992e12aefcf5dff47312caa48c042",
+  "record_count": 129,
+  "repository_display_count": 130,
+  "discrepancy": "Resolved: 129 nonempty records plus one blank trailing row in the NASA web table",
+  "repository_blank_rows": 1,
+  "discrepancy_resolved": true,
+  "source_field_comparison": "data/source-verification.json",
+  "date": "2026-11-15",
+  "pi_counts": {
+    "Bhattacharjee": 22,
+    "Ferkul": 4,
+    "Miller": 20,
+    "Olson": 27,
+    "Fernandez-Pello": 27,
+    "T'ien": 29
+  }
+}

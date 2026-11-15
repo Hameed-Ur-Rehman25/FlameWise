@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-15",
+  "source": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+  "version": 4,
+  "method": "Read all rendered table cells across pages of 100 and 30 rows; decode CSV-escaped quotes and normalize whitespace before per-row comparison.",
+  "displayed_rows": 130,
+  "blank_trailing_rows": 1,
+  "nonempty_records": 129,
+  "fields_per_record": 17,
+  "fields_checked": 2193,
+  "mismatched_records": 0,
+  "normalized_fnv1a32": "0571bfdf",
+  "fingerprint_purpose": "Comparison checksum, not a cryptographic provenance guarantee.",
+  "count_resolution": "130 displayed entries = 129 nonempty test records + one completely blank trailing row.",
+  "local_original_sha256": "71e792bf6b5fb5ea620c5dd70fbbac05515992e12aefcf5dff47312caa48c042",
+  "limits": [
+    "Live table comparison establishes transcription, not sensor calibration or scientific validity.",
+    "ReadMe and fan calibration workbook listed in current repository; download did not complete.",
+    "49 MB BASS-II technical report download exceeds web retrieval limit."
+  ]
+}

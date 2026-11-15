@@ -1,0 +1,234 @@
+{
+  "date": "2026-11-15",
+  "sources": [
+    {
+      "id": "bre",
+      "url": "https://science.nasa.gov/biological-physical/investigations/bre/",
+      "doi": null,
+      "review": "NASA BRE science objectives and gas-fed emulator method",
+      "scope": "Investigation context"
+    },
+    {
+      "id": "same-report",
+      "url": "https://ntrs.nasa.gov/api/citations/20140006579/downloads/20140006579.pdf",
+      "doi": null,
+      "review": "PDF pages 1,2,6,12; combined-flight scope and conclusions",
+      "scope": "Technical report"
+    },
+    {
+      "id": "flex-results",
+      "url": "https://www.nasa.gov/missions/station/iss-research/youre-hot-then-youre-cold/",
+      "doi": null,
+      "review": "Discovering cool flames section",
+      "scope": "Research findings context"
+    },
+    {
+      "id": "psi",
+      "url": "https://psi.nasa.gov/physci/repo/search?q=combustion",
+      "doi": null,
+      "review": "Repository metadata access; not a full repository inventory",
+      "scope": "Primary data repository"
+    },
+    {
+      "id": "overview",
+      "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+      "doi": null,
+      "review": "Archived BASS, DAFT, FLEX, SAME and ACME descriptions",
+      "scope": "Investigation context"
+    },
+    {
+      "id": "guide",
+      "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+      "doi": null,
+      "review": "Linked 56-page 2015 PDF; background and report scope",
+      "scope": "Scientific background"
+    },
+    {
+      "id": "video",
+      "url": "https://www.youtube.com/watch?v=W1oXykoz9zg",
+      "doi": null,
+      "review": "Not reviewed; prior fetch blocked; no transcript used",
+      "scope": "Introduction"
+    },
+    {
+      "id": "bass2",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+      "doi": "10.60555/4qc4-de67",
+      "review": "Live table: all nonempty rows and 17 columns; DOI/version/license; pagination and blank row",
+      "scope": "Primary investigation"
+    },
+    {
+      "id": "bass-report",
+      "url": "https://ntrs.nasa.gov/citations/20210011385",
+      "doi": null,
+      "review": "NTRS abstract only; 49 MB full report fetch failed",
+      "scope": "Technical report"
+    },
+    {
+      "id": "saffire-report",
+      "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf",
+      "doi": null,
+      "review": "PDF pages 9,12,14,16,17,29; conditions and included outcomes",
+      "scope": "Verified numerical evidence"
+    },
+    {
+      "id": "same",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+      "doi": "10.60555/gd4k-8h62",
+      "review": "Indexed PSI-102 metadata, DOI and scope",
+      "scope": "Detection research"
+    },
+    {
+      "id": "same-r",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+      "doi": "10.60555/2np7-jv14",
+      "review": "Indexed PSI-101 metadata, DOI, 2010 reflight distinction",
+      "scope": "Detection research"
+    },
+    {
+      "id": "flex",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+      "doi": "10.60555/mbq8-0451",
+      "review": "Indexed PSI-69 metadata, DOI and droplet scope",
+      "scope": "Suppression research"
+    },
+    {
+      "id": "apollo1",
+      "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-1",
+      "doi": null,
+      "review": "NASA accident/history context",
+      "scope": "Historical context"
+    },
+    {
+      "id": "apollo13",
+      "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-13",
+      "doi": null,
+      "review": "NASA accident/history context",
+      "scope": "Historical context"
+    },
+    {
+      "id": "mir",
+      "url": "https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/",
+      "doi": null,
+      "review": "NASA 1997 fire retrospective",
+      "scope": "Historical context"
+    },
+    {
+      "id": "tanks",
+      "url": "https://spinoff.nasa.gov/node/9582",
+      "doi": null,
+      "review": "NASA Spinoff 1976 summary",
+      "scope": "Earth application"
+    },
+    {
+      "id": "detector",
+      "url": "https://spinoff.nasa.gov/node/9407",
+      "doi": null,
+      "review": "NASA Spinoff 1978 summary",
+      "scope": "Earth application"
+    },
+    {
+      "id": "attire",
+      "url": "https://spinoff.nasa.gov/node/9918",
+      "doi": null,
+      "review": "NASA Spinoff 1982 summary",
+      "scope": "Earth application"
+    }
+  ],
+  "investigations": [
+    {
+      "id": "bass2",
+      "sources": [
+        "bass2",
+        "bass-report"
+      ],
+      "status": "Source-located findings",
+      "coverage": "129 source-transcribed CSV records"
+    },
+    {
+      "id": "bass",
+      "sources": [
+        "overview",
+        "guide"
+      ],
+      "status": "Objectives / context only; findings not yet extracted",
+      "coverage": "Investigation summary"
+    },
+    {
+      "id": "saffire1",
+      "sources": [
+        "saffire-report"
+      ],
+      "status": "Source-located findings",
+      "coverage": "1 verified condition record"
+    },
+    {
+      "id": "saffire2",
+      "sources": [
+        "saffire-report"
+      ],
+      "status": "Source-located findings",
+      "coverage": "6 verified condition records"
+    },
+    {
+      "id": "saffire3",
+      "sources": [
+        "saffire-report"
+      ],
+      "status": "Objectives / context only; findings not yet extracted",
+      "coverage": "Investigation summary"
+    },
+    {
+      "id": "same",
+      "sources": [
+        "same",
+        "same-report",
+        "overview"
+      ],
+      "status": "Source-located findings",
+      "coverage": "Investigation summary"
+    },
+    {
+      "id": "same-r",
+      "sources": [
+        "same-r",
+        "same-report"
+      ],
+      "status": "Objectives / context only; findings not yet extracted",
+      "coverage": "Investigation summary"
+    },
+    {
+      "id": "flex",
+      "sources": [
+        "flex",
+        "flex-results",
+        "overview"
+      ],
+      "status": "Source-located findings",
+      "coverage": "Investigation summary"
+    },
+    {
+      "id": "acme",
+      "sources": [
+        "overview",
+        "guide",
+        "bre"
+      ],
+      "status": "Objectives / context only; findings not yet extracted",
+      "coverage": "Investigation summary"
+    },
+    {
+      "id": "daft",
+      "sources": [
+        "overview"
+      ],
+      "status": "Objectives / context only; findings not yet extracted",
+      "coverage": "Investigation summary"
+    }
+  ],
+  "limits": [
+    "Readme/fan workbook listed but download timed out",
+    "Full BASS-II PDF not retrieved",
+    "No raw SAME/SAME-R/FLEX measurements imported"
+  ]
+}
