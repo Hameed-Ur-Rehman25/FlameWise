@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+const data=fs.readFileSync('data/document-passages.mjs','utf8').replaceAll('export const','const')+'\n'+fs.readFileSync('data/bass2-generated.mjs','utf8').replaceAll('export const','const')+'\n'+fs.readFileSync('data/catalogue.mjs','utf8').replace(/^import .*;$/gm,'').replaceAll('export const','const');
+const core=fs.readFileSync('src/core.mjs','utf8').replace(/^import .*;$/gm,'').replace(/^export \{.*\};$/m,'').replaceAll('export function','function').replaceAll('export const','const');
+const server=fs.readFileSync('src/server.mjs','utf8').replace(/^import .*;$/gm,'').replace('export async function api','async function api');
+const shim='(()=>{'+data+'\n'+core+'\n'+server+'\nwindow.fetch=async(input,options)=>api(new Request(new URL(input,"https://flamewise.offline"),options),{});})();';
+const html=fs.readFileSync('public/index.html','utf8').replace('<link rel="stylesheet" href="/styles.css">','<style>'+fs.readFileSync('public/styles.css','utf8')+'</style>').replace('<script src="/app.js" defer></script>','').replace('</body>','<script>'+ (shim+'\n'+fs.readFileSync('public/app.js','utf8')).replaceAll('</script','<\\/script')+'</script></body>');
+fs.writeFileSync('FlameWise.html',html);console.log('Offline dashboard built: FlameWise.html');
