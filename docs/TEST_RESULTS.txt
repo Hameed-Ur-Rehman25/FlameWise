@@ -1,0 +1,65 @@
+
+> flamewise@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ smoke questions retrieve detection investigations first (5.835ms)
+✔ droplet suppression retrieves FLEX (0.211333ms)
+✔ unrelated query abstains (1.554333ms)
+✔ filters never admit incompatible category (0.115708ms)
+✔ raw questionable values and unknown units remain preserved (0.06ms)
+✔ verified default excludes preview (0.066792ms)
+✔ lunar and out-of-range scenario exposes gaps (0.2085ms)
+✔ incompatible studies get qualitative-only comparison (0.05975ms)
+✔ operational safety question refuses unsupported conclusion (0.249458ms)
+✔ numerical CO retrieval excludes missing final value (1.774ms)
+✔ test-specific answers have valid source IDs (0.113042ms)
+✔ JSON export contains units, provenance and no previews by default (0.583292ms)
+✔ API health and catalogue work without keys (12.796416ms)
+✔ API validates questions and cross-origin writes (0.59725ms)
+✔ scenario rejects invalid numerical inputs (0.695625ms)
+✔ ask falls back transparently without keys (1.044625ms)
+✔ provider failure gives honest retrieval fallback (0.690125ms)
+✔ fabricated model citation triggers fallback (0.703833ms)
+✔ valid cited model response uses AI synthesis label (0.752625ms)
+✔ built Worker serves UI, data and 404 without dependencies (3.454667ms)
+✔ Saffire records agree with 2017 Table I on page 29 (0.358208ms)
+✔ row count explained by the live source blank row (0.090667ms)
+✔ censored, invalid and missing measurements keep raw values and flags (0.085875ms)
+✔ source dates are preserved with consistency flags (0.052083ms)
+✔ explicit mm thickness is retained in varying description order (0.037333ms)
+✔ SAME report is labeled as combined-flight evidence (0.074792ms)
+✔ Gemini key controls configured health (14.505625ms)
+✔ Gemini uses server-side key and parses cited JSON (9.176875ms)
+✔ Gemini quota failure falls back to retrieval (2.726125ms)
+✔ Gemini errors expose status without leaking provider response or key (0.961792ms)
+✔ Gemini structured paragraphs render validated source citations (0.970916ms)
+✔ ventilation outranks generic combustion context (5.552958ms)
+✔ scenario ranks known material and numerical overlap separately (0.601291ms)
+✔ published threshold research is not treated as operational advice (2.176792ms)
+✔ source passages include page provenance (0.132292ms)
+✔ Saffire outcomes keep distinct experimental conditions (0.059083ms)
+✔ AI rejects uncited paragraph (12.962125ms)
+✔ AI rejects unused reference (1.092125ms)
+✔ reported numerical outcomes are retrievable without a provider (0.27825ms)
+✔ cool-flame question retrieves FLEX finding (0.286583ms)
+✔ all downloaded CSV data rows imported with unique identifiers (0.286167ms)
+✔ raw provenance hashes match original downloaded bytes (0.250416ms)
+✔ CSV missing values and changing displays remain raw (0.073208ms)
+✔ 129 versus 130 blank-row explanation is documented (0.484958ms)
+✔ mixed export includes later records raw fields (1.69075ms)
+✔ offline application boots overview without a network server (14.885ms)
+✔ offline explorer, lab and assistant render from shared API (4.448625ms)
+✔ offline API returns source-grounded answers (4.28575ms)
+✔ investigation evidence dialog opens with current source passages (3.410959ms)
+✔ evidence dialog tolerates an older backend catalogue (3.229791ms)
+✔ successful synthesis updates status and retains it across navigation and safety retrieval (2.734166ms)
+✔ inline citations are source links while model text remains escaped (2.472167ms)
+✔ unlisted and unsafe citation targets never become answer links (2.709ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 53
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2665.737292
