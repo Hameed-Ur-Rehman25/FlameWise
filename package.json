@@ -1,0 +1,19 @@
+{
+  "name": "flamewise",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/core.mjs && node --check src/server.mjs && node --check public/app.js",
+    "ai:models": "node scripts/list-models.mjs",
+    "ai:check": "node scripts/check-gemini.mjs",
+    "ai:test": "node scripts/check-ai.mjs",
+    "verify:data": "node scripts/verify-data.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
