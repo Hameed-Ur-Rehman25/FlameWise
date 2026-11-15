@@ -1,5 +1,5 @@
-import {investigations, tests, sources, auditDate, passages, quantitativeFindings} from '../data/catalogue.mjs';
-export {investigations, tests, sources, auditDate, passages, quantitativeFindings};
+import {investigations, tests, sources, auditDate, passages, quantitativeFindings, insights} from '../data/catalogue.mjs';
+export {investigations, tests, sources, auditDate, passages, quantitativeFindings, insights};
 const stop=new Set('the a an for in on of to and or is are what which how can i my research about do does with from me tell study studies nasa please compare between'.split(' '));
 const synonyms={plastics:'plastic',materials:'material',fabrics:'fabric',detectors:'detector',sensors:'sensor',particles:'particle',extinguishing:'extinction',extinguishment:'extinction',extinguisher:'suppression',suppressants:'suppression',detection:'detector',prevent:'prevention',moon:'lunar',burning:'burn',fires:'fire'};
 export const tokens=q=>[...new Set(String(q||'').toLowerCase().replace(/[^a-z0-9₂]+/g,' ').split(' ').filter(t=>t&&!stop.has(t)).map(t=>synonyms[t]||t))];
@@ -60,3 +60,12 @@ export function evidenceAnswer(q){
 }
 export function exportBundle(rows){return {generatedAt:new Date().toISOString(),auditDate,description:'FlameWise curated research subset. No synthetic measurements. Null = not reported or not verified.',units:{thickness_mm:'mm',width_cm:'cm',length_cm:'cm',airflow_cms:'cm/s',air_display:'source display units unverified',oxygen_initial_pct:'volume %',oxygen_final_pct:'volume %',co_initial_ppm:'ppm',co_final_ppm:'ppm',co2_initial_pct:'volume %',co2_final_pct:'volume %',pressure_kpa:'kPa',spread_rate_mms:'mm/s',burn_duration_s:'s'},records:rows,quantitativeFindings,citations:sources.filter(s=>rows.some(r=>r.source===s.id)||quantitativeFindings.some(f=>f.source===s.id)),limitations:['Subset, not full PSI repository.','BASS-II CSV readings require calibration review; 129 nonempty CSV records match NASA; the extra displayed entry is blank.','No operational fire-safety certification.']};}
 export function toCSV(rows){if(!rows.length)return '';const keys=[...new Set(rows.flatMap(r=>Object.keys(r)))];const cell=x=>'"'+String(x==null?'':Array.isArray(x)?x.join('; '):typeof x==='object'?JSON.stringify(x):x).replaceAll('"','""')+'"';return keys.map(cell).join(',')+'\r\n'+rows.map(r=>keys.map(k=>cell(r[k])).join(',')).join('\r\n');}
+// Evidence strength = how much checkable material backs an insight in this collection. Not a danger or quality score.
+export function rankInsights(){
+ return insights.map(s=>{
+  const verifiedRecords=s.tests.filter(id=>tests.some(t=>t.id===id&&t.verification==='Report verified')).length;
+  const quantFindings=s.findings.filter(id=>quantitativeFindings.some(f=>f.id===id)).length;
+  const locatedPassages=s.passages.filter(id=>passages.some(p=>p.id===id&&p.page)).length;
+  return {...s,strength:{score:verifiedRecords+2*quantFindings+locatedPassages,tier:verifiedRecords||quantFindings?'Measured':'Reported',verifiedRecords,quantFindings,locatedPassages}};
+ }).sort((a,b)=>b.strength.score-a.strength.score||a.title.localeCompare(b.title));
+}

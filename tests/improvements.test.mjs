@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {rankInvestigations,evidenceAnswer,searchPassages,tests} from '../src/core.mjs';
+import {rankInvestigations,evidenceAnswer,searchPassages,tests,rankInsights,investigations,passages,quantitativeFindings,sources} from '../src/core.mjs';
 import {api} from '../src/server.mjs';
 const ask=question=>new Request('http://localhost/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question})});
 test('ventilation outranks generic combustion context',()=>{assert.equal(rankInvestigations({q:'How does ventilation affect combustion?'})[0].id,'bass2');});
@@ -10,3 +10,7 @@ test('Saffire outcomes keep distinct experimental conditions',()=>{const a=tests
 for(const [name,answer,ids] of [['uncited paragraph','Smoke research [same]\n\nAn unsupported assertion.',['same']],['unused reference','Smoke research [same]',['same','overview']]])test('AI rejects '+name,async()=>{const original=global.fetch;global.fetch=async()=>new Response(JSON.stringify({choices:[{message:{content:JSON.stringify({answer,citation_ids:ids})}}]}));try{const result=await(await api(ask('smoke detection'),{OPENAI_API_KEY:'mock'})).json();assert.equal(result.mode,'Evidence retrieval');assert.match(result.notice,/citation validation/);}finally{global.fetch=original;}});
 test('reported numerical outcomes are retrievable without a provider',()=>{const r=evidenceAnswer('What flame spread rates were measured?');assert.match(r.answer,/2.6 mm\/s/);assert.match(r.answer,/PDF page 29/);assert.ok(r.citations.includes('saffire-report'));});
 test('cool-flame question retrieves FLEX finding',()=>{const r=evidenceAnswer('What are cool flames?');assert.equal(r.matches[0],'flex');assert.ok(r.passages.some(p=>p.id==='flex-cool'));});
+test('insights are ranked by evidence strength and every reference resolves',()=>{const rows=rankInsights();assert.equal(rows.length,6);
+ for(let n=1;n<rows.length;n++)assert.ok(rows[n-1].strength.score>=rows[n].strength.score);
+ for(const s of rows){for(const id of s.investigations)assert.ok(investigations.some(i=>i.id===id),id);for(const id of s.tests)assert.ok(tests.some(t=>t.id===id),id);for(const id of s.findings)assert.ok(quantitativeFindings.some(f=>f.id===id),id);for(const id of s.passages)assert.ok(passages.some(p=>p.id===id),id);for(const id of s.sources)assert.ok(sources.some(x=>x.id===id),id);assert.ok(evidenceAnswer(s.question).matches.some(id=>s.investigations.includes(id)),s.question);}
+ assert.equal(rows.find(s=>s.id==='silicone').strength.verifiedRecords,4);assert.equal(rows.find(s=>s.id==='cool-flames').strength.tier,'Reported');});

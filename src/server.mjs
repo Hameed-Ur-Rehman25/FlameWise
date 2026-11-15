@@ -1,4 +1,4 @@
-import {investigations,tests,sources,auditDate,rankInvestigations,scenarioGaps,evidenceAnswer,exportBundle,toCSV,passages,searchPassages,operationalQuestion,quantitativeFindings} from './core.mjs';
+import {investigations,tests,sources,auditDate,rankInvestigations,scenarioGaps,evidenceAnswer,exportBundle,toCSV,passages,searchPassages,operationalQuestion,quantitativeFindings,rankInsights} from './core.mjs';
 const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers});
 const limits=new Map();
@@ -7,7 +7,7 @@ function providerConfig(env){const provider=env.AI_PROVIDER||(env.GEMINI_API_KEY
 export async function api(request,env={}){
  const url=new URL(request.url);const path=url.pathname;
  if(path==='/api/health')return json({ok:true,auditDate,aiConfigured:!!providerConfig(env).key,aiProvider:providerConfig(env).provider,aiModel:env.AI_MODEL||null,records:tests.length});
- if(path==='/api/catalogue'&&request.method==='GET')return json({investigations,tests,sources,auditDate,passages,quantitativeFindings});
+ if(path==='/api/catalogue'&&request.method==='GET')return json({investigations,tests,sources,auditDate,passages,quantitativeFindings,insights:rankInsights()});
  if(path==='/api/search'&&request.method==='GET')return json({results:rankInvestigations(Object.fromEntries(url.searchParams)),passages:searchPassages(url.searchParams.get('q')||'')});
  if(path==='/api/export'&&request.method==='GET'){
   const rows=tests.filter(t=>(url.searchParams.get('preview')==='true'||t.verification==='Report verified')&&(!url.searchParams.get('investigation')||t.investigation===url.searchParams.get('investigation')));
